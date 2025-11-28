@@ -12,6 +12,9 @@ Then('I should see a search bar', () => {
 });
 
 When('I visit a new url {string}', (url: string) => {
+  cy.visit('https://docs.cypress.io');
+  cy.get('body');
+
   cy.visit(url);
   cy.origin(url, () => {
     cy.get('body'); // all good
