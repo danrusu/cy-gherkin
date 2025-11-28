@@ -14,8 +14,9 @@ Then('I should see a search bar', () => {
 When('I visit a new url {string}', (url: string) => {
   cy.visit(url);
   cy.origin(url, () => {
-    cy.get('html'); // all good
-    const module = Cypress.require(`../support/dummyModule`);
-    module.f();
+    cy.get('body'); // all good
+
+    const { f } = Cypress.require('/cypress/support/dummyModule.ts');
+    f();
   });
 });
