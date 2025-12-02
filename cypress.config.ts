@@ -1,14 +1,16 @@
 import { defineConfig } from 'cypress';
 
+const webpackPreprocessor = require('@cypress/webpack-preprocessor');
+
 import createBundler from '@bahmutov/cypress-esbuild-preprocessor';
 import { addCucumberPreprocessorPlugin } from '@badeball/cypress-cucumber-preprocessor';
 import { createEsbuildPlugin } from '@badeball/cypress-cucumber-preprocessor/esbuild';
 
 export default defineConfig({
   e2e: {
-    specPattern: '**/*.{feature,features}',
+    specPattern: '**/*.{spec.ts,feature}',
 
-    supportFile: './cypress/support/index.ts',
+    // supportFile: './cypress/support/index.ts',
 
     viewportWidth: 1280,
     viewportHeight: 1024,
@@ -17,6 +19,7 @@ export default defineConfig({
     video: false,
 
     experimentalOriginDependencies: true,
+    experimentalModifyObstructiveThirdPartyCode: true,
 
     setupNodeEvents,
   },
